@@ -7,7 +7,7 @@ const getAllData = async () => {
 
 		let countAll = allBooks.length
 
-		allBooks.forEach( (element, index) => {
+		allBooks.reverse().forEach( (element, index) => {
 			
 			const newDiv = document.createElement('DIV')
 			newDiv.textContent = (countAll - (index)) + '. '  + element.book_name
@@ -35,7 +35,8 @@ form.addEventListener('submit', async (evt) => {
 			body: JSON.stringify({
 				book_name: book__name.value,
 				book_number: book__number.value,
-				book_author: book__author.value
+				book_author: book__author.value,
+				book_count: book__count.value,
 			})
 		})
 

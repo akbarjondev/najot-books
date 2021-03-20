@@ -42,18 +42,18 @@ app.get('/books', async (req, res) => {
 
 app.post('/books', async (req, res) => {
 		
-	const { book_name, book_number, book_author } = req.body
+	const { book_name, book_number, book_author, book_count } = req.body
 
 	const INSERT_BOOK = `
 		insert into
-			books (book_name, book_number, book_author)
-		values($1, $2, $3)
+			books (book_name, book_number, book_author, book_count)
+		values($1, $2, $3, $4)
 		returning book_id
 		;
 	`
 	try {
 
-		const [ dataRes ] = await fetch(INSERT_BOOK, book_name, book_number, book_author)
+		const [ dataRes ] = await fetch(INSERT_BOOK, book_name, book_number, book_author, book_count)
 
 		res.send({
 			status: 200,

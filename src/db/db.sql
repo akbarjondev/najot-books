@@ -8,3 +8,5 @@ create table books(
 	book_author varchar(150),
 	book_added_at timestamp with time zone default current_timestamp
 );
+
+alter table books add column book_count int default 1;
