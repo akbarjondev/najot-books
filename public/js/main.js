@@ -47,6 +47,8 @@ form.addEventListener('submit', async (evt) => {
 
 			alert('Kitob qo\'shildi :)')
 
+			books.textContent = ''
+
 			getAllData()
 
 		} else {

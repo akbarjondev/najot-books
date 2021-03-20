@@ -32,11 +32,3 @@ body {
 	border-radius: 4px;
 	cursor: pointer;
 }
-
-.books {
-	margin-top: 50px;
-}
-
-.books__heading {
-	text-align: center;	
-}
