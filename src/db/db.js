@@ -1,10 +1,10 @@
 const Pool = require('pg').Pool
 
 const pool = new Pool({
-	user: 'postgres',
-	password: '11235',
-	database: 'books',
-	host: 'localhost',
+	user: 'opnkrxgm',
+	password: 'aTz-wTTfTGm1J-uy3Lwatss8n8Tc7Wse',
+	database: 'opnkrxgm',
+	host: 'satao.db.elephantsql.com',
 	port: 5432
 })
 

@@ -1,6 +1,6 @@
 const express = require('express')
-const ejs = require('ejs')
 const parser = require('body-parser')
+const cors = require('cors')
 
 const { fetch } = require('./src/db/db')
 
@@ -8,17 +8,9 @@ const PORT = process.env.PORT || 3003
 
 const app = express()
 
-app.set('views', __dirname + '/public/')
-app.engine('html', ejs.renderFile)
-app.set('view engine', 'html')
-
-app.use(express.static('public'))
+app.use(cors())
 app.use(parser.json())
 app.use(parser.urlencoded({ extended: false }))
-
-app.get('/', (req, res) => {
-	res.renderFile('index.html')
-})
 
 app.get('/books', async (req, res) => {
 
@@ -34,7 +26,7 @@ app.get('/books', async (req, res) => {
 	} catch(e) {
 		res.send({
 			status: 500,
-			error: e
+			error: e.message
 		})
 		
 		console.log(e)
@@ -44,18 +36,18 @@ app.get('/books', async (req, res) => {
 
 app.post('/books', async (req, res) => {
 		
-	const { book_name, book_number, book_author, book_count } = req.body
+	const { book_name, book_number, book_author, book_count, book_desc } = req.body
 
 	const INSERT_BOOK = `
 		insert into
-			books (book_name, book_number, book_author, book_count)
-		values($1, $2, $3, $4)
+			books (book_name, book_number, book_author, book_count, book_desc)
+		values($1, $2, $3, $4, $5)
 		returning book_id
 		;
 	`
 	try {
 
-		const [ dataRes ] = await fetch(INSERT_BOOK, book_name, book_number, book_author, book_count)
+		const [ dataRes ] = await fetch(INSERT_BOOK, book_name, book_number, book_author, book_count, book_desc)
 
 		res.send({
 			status: 200,
@@ -66,7 +58,7 @@ app.post('/books', async (req, res) => {
 
 		res.send({
 			status: 500,
-			error: e
+			error: e.message
 		})		
 		console.log(e)
 	}
