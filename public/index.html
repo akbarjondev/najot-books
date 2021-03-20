@@ -7,23 +7,34 @@
 	<title>Najot ta'lim books</title>
 </head>
 <body>
-	<h3 class="heading">Kitob qo'shish</h3>
+	<div class="container">
+		
+		<h3 class="heading">Kitob qo'shish</h3>
 
-	<form class="form" id="form" action="/books" method="POST">
-		<div class="form__div">
-			<input class="form__input" id="book__name" required type="text" placeholder="kitob nomi">
-		</div>
-		<div class="form__div">
-			<input class="form__input" id="book__author" required type="text" placeholder="kitob muallifi">
-		</div>
-		<div class="form__div">
-			<input class="form__input" id="book__number" required type="text" placeholder="kitob raqami">
-		</div>
+		<form class="form" id="form" action="/books" method="POST">
+			<div class="form__div">
+				<label for="book__name">Nomi</label>
+				<input class="form__input" id="book__name" required type="text" placeholder="kitob nomi">
+			</div>
+			<div class="form__div">
+				<label for="book__author">Kim yozgan?</label>
+				<input class="form__input" id="book__author" required type="text" placeholder="kitob muallifi">
+			</div>
+			<div class="form__div">
+				<label for="book__number">Ro'yxat raqami qanday?</label>
+				<input class="form__input" id="book__number" required type="text" placeholder="kitob raqami">
+			</div>
 
-		<div class="form__div">
-			<button class="form__submit" type="submit">Qo'shish</button>
+			<div class="form__div">
+				<button class="form__submit" type="submit">Qo'shish</button>
+			</div>
+		</form>
+
+		<div class="books" id="books">
+			<h4 class="books__heading">Bari kitoblar:</h4>
 		</div>
-	</form>
+		
+	</div>
 
 	<script src="./js/main.js"></script>
 </body>
