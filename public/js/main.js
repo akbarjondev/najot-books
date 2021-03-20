@@ -1,3 +1,26 @@
+const getAllData = async () => {
+
+	try {
+		const booksResponse = await fetch('http://localhost:3003/books')
+
+		const { data: allBooks } = await booksResponse.json()
+
+		let countAll = allBooks.length
+
+		allBooks.forEach( (element, index) => {
+			
+			const newDiv = document.createElement('DIV')
+			newDiv.textContent = (countAll - (index)) + '. '  + element.book_name
+
+			books.appendChild(newDiv)
+		})
+
+	} catch(e) {
+		console.log(e)
+	}
+
+}
+
 form.addEventListener('submit', async (evt) => {
 
 	evt.preventDefault()
@@ -18,9 +41,22 @@ form.addEventListener('submit', async (evt) => {
 
 		const data = await response.json()
 		
-		console.log(data)
+		if(data.status === 200) {
+			form.reset()
+
+			alert('Kitob qo\'shildi :)')
+
+			getAllData()
+
+		} else {
+			
+			alert('Xato ketdi :(')
+
+		}
 	} catch(e) {
 		console.log(e)
 	}
 
 })
+
+getAllData()
