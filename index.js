@@ -12,6 +12,14 @@ app.use(cors())
 app.use(parser.json())
 app.use(parser.urlencoded({ extended: false }))
 
+app.get('/', (req, res) => {
+	res.send({
+		routes: [
+			{ books: '/books' },
+		]
+	})
+})
+
 app.get('/books', async (req, res) => {
 
 	try {
