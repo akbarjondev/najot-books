@@ -49,6 +49,8 @@ form.addEventListener('submit', async (evt) => {
 
 			books.textContent = ''
 
+			book__name.focus()
+
 			getAllData()
 
 		} else {

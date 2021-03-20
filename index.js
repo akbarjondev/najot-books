@@ -4,6 +4,8 @@ const parser = require('body-parser')
 
 const { fetch } = require('./src/db/db')
 
+const PORT = process.env.PORT || 3003
+
 const app = express()
 
 app.set('views', __dirname + '/public/')
@@ -71,4 +73,4 @@ app.post('/books', async (req, res) => {
 
 })
 
-app.listen(3003, () => console.log('ready at http://localhost:3003'))
+app.listen(PORT, () => console.log(`ready at http://localhost:${PORT}`))
